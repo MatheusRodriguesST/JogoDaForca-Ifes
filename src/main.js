@@ -1,0 +1,1 @@
+//Código responsavel pelo jogo no Index.html
