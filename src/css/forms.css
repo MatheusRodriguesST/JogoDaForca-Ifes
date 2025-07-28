@@ -1,0 +1,70 @@
+/*Estilização da página de Login e de Cadastro*/
+
+/* Body ocupando toda a página e deixando tudo ao centro */
+body{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Form deixando tudo ao centro, com altura e largura personalizada e borda preta */
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    padding: 10px;
+    width: 400px;
+    height: 350px;
+}
+
+/* Input com largura e altura personalizada, fonte especificada e margem */
+input{
+    padding: 5px 10px;
+    margin: 2px;
+    font-size: 14px;
+}
+
+/* Div's das informações*/
+.nome-container,
+.email-container,
+.senha-container,
+.confirSenha-container{
+    width: 250px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Div's das informações e seus inputs*/
+.nome-container input,
+.email-container input,
+.senha-container input,
+.confirSenha-container input{
+    margin: 0px;
+}
+
+/* Botão com margem e borda */
+button{
+    margin: 5px;
+    border-radius: 5px;
+}
+
+/* Título "Cadastro" com margem */
+h1{
+    margin: 5px;
+}
+
+/* Div da correção de informação */
+.enviado{
+    border: 2px solid green;
+    width: 300px;
+    padding: 4px;
+    border-radius: 5px;
+    margin: 5px;
+    display: none;
+}
