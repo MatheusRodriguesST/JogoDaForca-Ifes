@@ -36,3 +36,14 @@ function cadastrarUsuario(formId) {
     // Retorna o array de usuários para uso adicional
     return usuarios;
 }
+
+//Mudando aparência
+
+//Div que notifica
+const enviado = document.getElementById("enviado");
+
+//Delay para mudar de tela para o Login
+function MudarLogin(){
+   enviado.style.display = "block";
+   enviado.innerHTML = "Carregando para aba de Login..."
+}

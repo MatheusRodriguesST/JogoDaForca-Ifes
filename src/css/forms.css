@@ -8,6 +8,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: aqua;
 }
 
 /* Form deixando tudo ao centro, com altura e largura personalizada e borda preta */
@@ -19,7 +20,8 @@ form{
     border: 2px solid black;
     padding: 10px;
     width: 400px;
-    height: 350px;
+    height: 400px;
+    background-color: #ffffff80;
 }
 
 /* Input com largura e altura personalizada, fonte especificada e margem */
@@ -61,10 +63,22 @@ h1{
 
 /* Div da correção de informação */
 .enviado{
-    border: 2px solid green;
+    border: 2px solid rgb(72, 174, 72);
+    background-color: rgb(194, 247, 194);
+    color: rgb(51, 51, 51);
     width: 300px;
-    padding: 4px;
+    padding: 12px;
     border-radius: 5px;
     margin: 5px;
     display: none;
+}
+
+p{
+    margin: 5px;
+}
+
+a{
+    margin: 0px;
+    transition: background-color 0.5s ease, width 0.5s ease;
+    transition-delay: 0.2s;
 }
