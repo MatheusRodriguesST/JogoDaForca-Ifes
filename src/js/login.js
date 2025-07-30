@@ -1,4 +1,4 @@
-//Código responsavel por Cadastro
+//Código responsavel por login
 
 function LoginUsuario(event) {
     event.preventDefault(); // proibi a página de atualizar

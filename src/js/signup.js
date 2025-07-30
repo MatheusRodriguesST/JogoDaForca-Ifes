@@ -1,38 +1,50 @@
 //Código responsavel por Cadastro
 
-function cadastrarUsuario(formId) {
-    // obtém o formulario id para pegar as informações
-    const form = document.getElementById(formId);
-    
-    // coleta dados
-    const formData = new FormData(form);
-    const novoUsuario = {};
-    formData.forEach((valor, chave) => {
-        novoUsuario[chave] = valor;
-    });
 
-    // carrega os dados ou cria um vazio
-    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+function cadastrarUsuario(event) {
+    event.preventDefault(); // proibi a página de atualizar
 
-    // essa constante faz a verificação passando todos os dados para minusculo para evitar problema por CaseSensitive
-    const duplicata = usuarios.some(usuario => 
-        usuario.nome.toLowerCase() === novoUsuario.nome.toLowerCase() || 
-        usuario.email.toLowerCase() === novoUsuario.email.toLowerCase()
-    );
+    const nome = document.getElementById('nome').value.trim(); //pega o nome do formulário
+    const email = document.getElementById('email').value.trim(); // pega o email do formulário
+    const senha = document.getElementById('senha').value; //senha e confirmar senha
+    const confirmarSenha = document.getElementById('confirmar-senha').value;
 
-    //confere se a const duplicata é verdadeira e se for, avisa que já possui um usuário cadastrado
-    if (duplicata) {
-        alert('Erro: Já existe um usuário com esse nome ou email!');
-        return null;  
+    // confere se senha e confirmar senha são iguais, se não for adiciona borda vermelha
+    if (senha !== confirmarSenha) {
+        const senhaInput = document.getElementById('senha');
+        const confirmarInput = document.getElementById('confirmar-senha');
+
+        senhaInput.style.border = "2px solid red";
+        confirmarInput.style.border = "2px solid red";
+
+        alert("As senhas não coincidem.");
+        return;
+    } else {
+        document.getElementById('senha').style.border = "";
+        document.getElementById('confirmar-senha').style.border = "";
     }
 
-    // adiciona usuário
-    usuarios.push(novoUsuario);
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || []; //lista qyue armazena os usuarios no localStorage
 
-    // salva o array atualizado no localstorage e confirma o cadastro
+    // Verifica se o nome ou email já estão cadastrados
+    const duplicado = usuarios.find(user => user.nome === nome || user.email === email);
+
+    if (duplicado) {
+        alert("Nome ou Email já estão em uso!");
+        return;
+    }
+
+    const novoUsuario = {
+        nome,
+        email,
+        senha
+    };
+
+    usuarios.push(novoUsuario); //adiciona o novo usuário à lista de usuários e usa o JSON.stringfy para converter o objeto em uma string JSON
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
-    alert('Usuário cadastrado com sucesso!');
 
-    // Retorna o array de usuários para uso adicional
-    return usuarios;
+    console.log("Usuário cadastrado com sucesso!");
+    window.location.href = "../html/index.html"; // redireciona para a página do jogo
 }
+
+document.getElementById('formCadastro').addEventListener('submit', cadastrarUsuario); // vincula a função ao botão
