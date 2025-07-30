@@ -9,10 +9,29 @@
 
  </head>
  <body>
-    
+    <form id="formLogin">
+      <h1>Login</h1>
 
+      <!-- Local onde será informado se esta correto ou não os preenchimentos do cadastro -->
+      <div class="enviado" id="enviado">ola</div>
 
+      <!-- Informação - Email -->
+      <div class="email-container">
+         <div>Email:</div>
+         <input type="email" id="email" placeholder="seu-email@exemplo.com" required>
+      </div>
 
+      <!-- Informação - Senha -->
+      <div class="senha-container">
+         <div>Senha:</div>
+         <input type="password" id="senha" placeholder="Sua senha" required>
+      </div>
+
+      <!-- Botão para envio do formulário -->
+      <button type="submit">Enviar</button>
+
+      <p>Não tem uma conta? <a href="signup.html" onclick="MudarCadastro()">Cadastro</a></p>
+   </form>
 
    <script src="../js/login.js"></script>
  </body>

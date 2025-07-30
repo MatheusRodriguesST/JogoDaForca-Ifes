@@ -80,5 +80,5 @@ p{
 a{
     margin: 0px;
     transition: background-color 0.5s ease, width 0.5s ease;
-    transition-delay: 0.2s;
+    transition-delay: 0.5s;
 }

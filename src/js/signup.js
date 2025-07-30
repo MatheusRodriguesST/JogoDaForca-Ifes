@@ -48,4 +48,14 @@ function cadastrarUsuario(event) {
 
 document.getElementById('formCadastro').addEventListener('submit', cadastrarUsuario); // vincula a função ao botão
 
-//teste
+//Aparência 
+const enviado = document.getElementById("enviado");
+function MudarLogin(){
+   enviado.style.display = "block";
+   enviado.innerHTML = "Carregando para aba de Login..."
+}
+
+function MudarCadastro(){
+    enviado.style.display = "block";
+    enviado.innerHTML = "Carregando para aba de Cadastro...";
+}
