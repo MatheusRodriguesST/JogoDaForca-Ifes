@@ -1,6 +1,10 @@
 /*Estilização da página de Login e de Cadastro*/
 
-/* Body ocupando toda a página e deixando tudo ao centro */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
 body{
     width: 100%;
     height: 100vh;
@@ -8,30 +12,43 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: aqua;
+    background-color: rgb(16, 16, 16);
 }
 
-/* Form deixando tudo ao centro, com altura e largura personalizada e borda preta */
 form{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid black;
+    border: 2px solid rgb(160, 197, 184);
     padding: 10px;
-    width: 400px;
-    height: 400px;
-    background-color: #ffffff80;
+    background-color: #35353580;
+    border-radius: 7px;
 }
 
-/* Input com largura e altura personalizada, fonte especificada e margem */
+.formulario-cadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+}
+
 input{
     padding: 5px 10px;
     margin: 2px;
     font-size: 14px;
+    background-color: rgb(219, 231, 249);
+    border-radius: 3px;
+    border: 0px;
+    border-bottom: 1.5px solid rgb(219, 219, 238);
 }
 
-/* Div's das informações*/
+input:focus{
+    border: 2px solid black;
+}
+
 .nome-container,
 .email-container,
 .senha-container,
@@ -42,7 +59,6 @@ input{
     flex-direction: column;
 }
 
-/* Div's das informações e seus inputs*/
 .nome-container input,
 .email-container input,
 .senha-container input,
@@ -50,35 +66,90 @@ input{
     margin: 0px;
 }
 
-/* Botão com margem e borda */
 button{
-    margin: 5px;
+    margin: 10px;
     border-radius: 5px;
+    border: 2px solid rgb(144, 213, 213);
+    padding: 5px 15px;
+    background-color: rgb(144, 213, 213);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all .4s ease-out;
 }
 
-/* Título "Cadastro" com margem */
+button:hover{
+    background-color: rgb(70, 172, 246);
+    font-size: 18px;
+}
+
 h1{
     margin: 5px;
+    font-size: 35px;
+    color: rgb(240, 240, 240);
 }
 
-/* Div da correção de informação */
-.enviado{
+.texto{
+    color:rgb(210, 213, 215);
+}
+
+.enviado-cadastro{
     border: 2px solid rgb(72, 174, 72);
     background-color: rgb(194, 247, 194);
     color: rgb(51, 51, 51);
-    width: 300px;
-    padding: 12px;
+    width: 250px;
+    padding: 8px;
     border-radius: 5px;
-    margin: 5px;
+    margin: 3px;
     display: none;
 }
 
 p{
-    margin: 5px;
+    margin: 10px;
+    font-size: 20px;
+    color: aliceblue;
 }
 
 a{
     margin: 0px;
-    transition: background-color 0.5s ease, width 0.5s ease;
-    transition-delay: 0.5s;
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(21, 197, 197);
+    transition: all .4s ease-out;
+}
+
+a:hover{
+    color: rgb(103, 132, 246);
+    font-size: 22px;
+}
+
+hr{
+    margin-top: 5px;
+    width: 60%;
+    background-color: white;
+    margin: 2px solid white;    
+}
+
+.formulario-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 350px;
+}
+
+.enviado-login{
+    border: 2px solid rgb(72, 174, 72);
+    background-color: rgb(194, 247, 194);
+    color: rgb(51, 51, 51);
+    width: 250px;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 3px;
+    display: none;
+}
+
+.botao-login{
+    margin: 10px;
+    padding: 5px 13px;
 }

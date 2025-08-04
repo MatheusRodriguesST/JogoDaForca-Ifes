@@ -11,39 +11,43 @@
  <body>
    <!-- Inicio do formulário de cadastro -->
    <form id="formCadastro">
-      <h1>Cadastro</h1>
+      <div class="formulario-cadastro">
+         <h1>Cadastro</h1>
 
-      <!-- Local onde será informado se esta correto ou não os preenchimentos do cadastro -->
-      <div class="enviado" id="enviado">ola</div>
+         <!-- Local onde será informado se esta correto ou não os preenchimentos do cadastro -->
+         <div class="enviado-cadastro" id="enviado">ola</div>
 
-      <!-- Informação - Nome -->
-      <div class="nome-container">
-         <div>Nome:</div>
-         <input type="text" id="nome" placeholder="Seu nome" required>
+         <!-- Informação - Nome -->
+         <div class="nome-container">
+            <div class="texto">Nome:</div>
+            <input type="text" id="nome" placeholder="Seu nome" required>
+         </div>
+
+         <!-- Informação - Email -->
+         <div class="email-container">
+            <div class="texto">Email:</div>
+            <input type="email" id="email" placeholder="seu-email@exemplo.com" required>
+         </div>
+
+         <!-- Informação - Senha -->
+         <div class="senha-container">
+            <div class="texto">Senha:</div>
+            <input type="password" id="senha" placeholder="Senha123" required>
+         </div>
+
+         <!-- Informação - Confirmar Senha -->
+         <div class="confirSenha-container">
+            <div class="texto">Confirmar Senha:</div>
+            <input type="password" id="confirmar-senha" placeholder="Repita a senha" required>
+         </div>
+
+         <!-- Botão para envio do formulário -->
+         <button type="submit">Enviar</button>
+
+         <hr>
+
+         <p>Já tem uma conta? <a href="login.html" onclick="MudarLogin()">Login</a></p>
       </div>
-
-      <!-- Informação - Email -->
-      <div class="email-container">
-         <div>Email:</div>
-         <input type="email" id="email" placeholder="seu-email@exemplo.com" required>
-      </div>
-
-      <!-- Informação - Senha -->
-      <div class="senha-container">
-         <div>Senha:</div>
-         <input type="password" id="senha" placeholder="Sua senha" required>
-      </div>
-
-      <!-- Informação - Confirmar Senha -->
-      <div class="confirSenha-container">
-         <div>Confirmar Senha:</div>
-         <input type="password" id="confirmar-senha" placeholder="Confirme sua senha" required>
-      </div>
-
-      <!-- Botão para envio do formulário -->
-      <button type="submit">Enviar</button>
-
-      <p>Já tem uma conta? <a href="login.html" onclick="MudarLogin()">Login</a></p>
    </form>
    <!-- Fim do formulário de cadastro -->
 
