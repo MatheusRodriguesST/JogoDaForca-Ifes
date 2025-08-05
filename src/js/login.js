@@ -5,7 +5,7 @@ function LoginUsuario(event) {
 
     // pega os valores do formulário
     const email = document.getElementById('email').value;
-    const senha = document.getElementById('senha').value;
+    const senha = document.getElementById('senha1').value;
 
     //recupera os dados do localstorage do cadastro.html
     const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
@@ -20,7 +20,7 @@ function LoginUsuario(event) {
         //alera o limpa oque foi escrito depois 
         alert('Email ou senha incorretos!');
         document.getElementById('email').value = ""
-        document.getElementById('senha').value = ""
+        document.getElementById('senha1').value = ""
     }
 }
 
@@ -29,7 +29,7 @@ document.getElementById('formLogin').addEventListener('submit', LoginUsuario);
 
 //parte responsavel por alterar e esconder ou exibir senha
 document.getElementById('hidder').addEventListener('click', function () {
-    const senhaInput = document.getElementById('senha');
+    const senhaInput = document.getElementById('senha1');
     const isPassword = senhaInput.type === 'password';
     senhaInput.type = isPassword ? 'text' : 'password'; //altera o tipo de input
     this.src = isPassword ? '../img/eyeopen.svg' : '../img/eyeclosed.svg'; //altera a imagem
