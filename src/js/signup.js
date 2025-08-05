@@ -49,7 +49,32 @@ function cadastrarUsuario(event) {
 document.getElementById('formCadastro').addEventListener('submit', cadastrarUsuario); // vincula a função ao botão
 
 //Aparência 
+
+// Declaração das variáveis
+
+// Div onde mostra os erros e acertos
 const enviado = document.getElementById("enviado");
+
+// Declaração do input e texto - nome
+const nome = document.getElementById("nome");
+const textoNome = document.getElementById("textoNome");
+let validNome = false;
+
+// Declaração do input e texto - email
+const email = document.getElementById("email");
+const textoEmail = document.getElementById("textoEmail");
+let validEmail = false;
+
+// Declaração do input e texto - senha
+const senha = document.getElementById("senha");
+const textoSenha = document.getElementById("textoSenha");
+let validSenha = false;
+
+// Declaração do input e texto - confirmar senha
+const confirmarSenha = document.getElementById("confirmar-senha");
+const textoConfirmarSenha = document.getElementById("textoConfirmar-senha");
+let validConfirmarSenha = false;
+
 function MudarLogin(){
    enviado.style.display = "block";
    enviado.innerHTML = "Carregando para aba de Login..."
