@@ -26,3 +26,11 @@ function LoginUsuario(event) {
 
 //vinculação ao login.html
 document.getElementById('formLogin').addEventListener('submit', LoginUsuario);
+
+//parte responsavel por alterar e esconder ou exibir senha
+document.getElementById('hidder').addEventListener('click', function () {
+    const senhaInput = document.getElementById('senha');
+    const isPassword = senhaInput.type === 'password';
+    senhaInput.type = isPassword ? 'text' : 'password'; //altera o tipo de input
+    this.src = isPassword ? '../img/eyeopen.svg' : '../img/eyeclosed.svg'; //altera a imagem
+});

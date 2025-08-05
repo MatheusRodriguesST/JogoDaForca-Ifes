@@ -23,7 +23,8 @@ form{
     border: 2px solid rgb(160, 197, 184);
     padding: 10px;
     background-color: #35353580;
-    border-radius: 7px;
+    border-radius: 14px;
+    padding-bottom: 20px;
 }
 
 .formulario-cadastro{
@@ -136,6 +137,7 @@ hr{
     align-items: center;
     height: 300px;
     width: 350px;
+    
 }
 
 .enviado-login{
@@ -152,4 +154,23 @@ hr{
 .botao-login{
     margin: 10px;
     padding: 5px 13px;
+}
+
+#senha-hidder {
+    display: flex;
+    flex-direction:row;
+    position: relative;
+}
+
+#senha {
+    width: 100%;
+}
+
+#hidder { /*responsavel pelo butao de esconder senha*/
+    width: 27px;
+    height: 27px; 
+    margin-right: 10px;
+    position: absolute;
+    right: 0rem;
+    cursor: pointer;
 }
