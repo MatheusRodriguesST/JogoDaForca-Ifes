@@ -59,22 +59,129 @@ const enviado = document.getElementById("enviado");
 const nome = document.getElementById("nome");
 const textoNome = document.getElementById("textoNome");
 let validNome = false;
+nome.addEventListener('keyup', validarNome);
 
 // Declaração do input e texto - email
 const email = document.getElementById("email");
 const textoEmail = document.getElementById("textoEmail");
 let validEmail = false;
+email.addEventListener('keyup', validarEmail);
 
 // Declaração do input e texto - senha
 const senha = document.getElementById("senha");
 const textoSenha = document.getElementById("textoSenha");
 let validSenha = false;
+senha.addEventListener('keyup', validarSenha);
 
 // Declaração do input e texto - confirmar senha
 const confirmarSenha = document.getElementById("confirmar-senha");
 const textoConfirmarSenha = document.getElementById("textoConfirmar-senha");
 let validConfirmarSenha = false;
+confirmarSenha.addEventListener('keyup', validarConfirmarSenha);
 
+// Evento para informar se o nome está de acordo com o solicitado
+function validarNome(){
+    if (nome.value.trim() === ""){
+        textoNome.style.color = "red";
+        nome.value = "";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Não pode começar com espaço, <br> por favor digite um valor válido."
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    } 
+    else if (nome.value.trim().length <= 2){
+        textoNome.style.color = "red";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Por favor, digite um nome maior que 2 letras."
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    } 
+    else if (nome.value.trim() != "" && 
+             nome.value.trim().length >= 3 ) 
+    {
+        textoNome.style.color = "rgb(194, 247, 194)";
+        enviado.style.display = "none";
+    }
+}
+
+function validarEmail(){
+    if (email.value.trim() === ""){
+        textoEmail.style.color = "red";
+        email.value = "";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Não pode começar com espaço, <br> por favor digite um valor válido."
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    } else if (email.value.trim().length <= 2){
+        textoEmail.style.color = "red";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Por favor, digite um nome maior que 2 letras."
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    } 
+    else if (email.value.trim() != "" && 
+             email.value.trim().length >= 3 ) 
+    {
+        textoEmail.style.color = "rgb(194, 247, 194)";
+        enviado.style.display = "none";
+    }
+}
+
+function validarSenha(){
+    if (senha.value.trim() === ""){
+        textoSenha.style.color = "red";
+        senha.value = "";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Não pode começar com espaço, <br> por favor digite um valor válido."
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    } else if (senha.value.trim().length <= 2){
+        textoSenha.style.color = "red";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Por favor, digite um nome maior que 2 letras."
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    } 
+    else if (senha.value.trim() != "" && 
+             senha.value.trim().length >= 3 ) 
+    {
+        textoSenha.style.color = "rgb(194, 247, 194)";
+        enviado.style.display = "none";
+    }
+}
+
+function validarConfirmarSenha(){
+    if (confirmarSenha.value.trim() === ""){
+        textoConfirmarSenha.style.color = "red";
+        confirmarSenha.value = "";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Não pode começar com espaço, <br> por favor digite um valor válido."
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    } else if (confirmarSenha.value.trim().length <= 2){
+        textoConfirmarSenha.style.color = "red";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Por favor, digite um nome maior que 2 letras."
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    } 
+    else if (confirmarSenha.value.trim() != "" && 
+             confirmarSenha.value.trim().length >= 3 ) 
+    {
+        textoConfirmarSenha.style.color = "rgb(194, 247, 194)";
+        enviado.style.display = "none";
+    }
+}
+
+// Informar se o login é válido
 function EnviarLogin(){
     // Mudar o nome
     if (nome.value === ""){
@@ -83,7 +190,9 @@ function EnviarLogin(){
 
         // Div com o resultado
         enviado.style.display = "block";
-        enviado.style.background = "rgba(253, 139, 139, 1)";
+        enviado.innerHTML = "Os campos estão vazios, insira um valor válido."
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
 
     } else {
