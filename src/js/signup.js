@@ -98,21 +98,21 @@ function validarNome(){
     else if (!apenasLetras.test(nome.value)){
         textoNome.style.color = "red";
         enviado.style.display = "block";
-        enviado.innerHTML = "Por favor, não insirá números."
+        enviado.innerHTML = "Por favor, insirá apenas letras."
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
     }
-    else if (nome.value.trim().length <= 2){
+    else if (nome.value.trim().length <= 3){
         textoNome.style.color = "red";
         enviado.style.display = "block";
-        enviado.innerHTML = "Por favor, digite um nome maior que 2 letras."
+        enviado.innerHTML = "Por favor, digite um nome maior que 3 letras."
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
     } 
     else if (nome.value.trim() != "" && 
-             nome.value.trim().length >= 3 &&
+             nome.value.trim().length >= 4 &&
              apenasLetras.test(nome.value)) 
     {
         textoNome.style.color = "rgb(194, 247, 194)";
