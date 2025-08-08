@@ -55,6 +55,9 @@ document.getElementById('formCadastro').addEventListener('submit', cadastrarUsua
 // Div onde mostra os erros e acertos
 const enviado = document.getElementById("enviado");
 
+// Apenas Letras Incluido
+const apenasLetras = /^[A-Za-zÀ-ÿ\s]*$/;
+
 // Declaração do input e texto - nome
 const nome = document.getElementById("nome");
 const textoNome = document.getElementById("textoNome");
@@ -66,6 +69,8 @@ const email = document.getElementById("email");
 const textoEmail = document.getElementById("textoEmail");
 let validEmail = false;
 email.addEventListener('keyup', validarEmail);
+
+const depoisArroba = email.value.substring(indiceArroba + 1);
 
 // Declaração do input e texto - senha
 const senha = document.getElementById("senha");
@@ -90,6 +95,14 @@ function validarNome(){
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
     } 
+    else if (!apenasLetras.test(nome.value)){
+        textoNome.style.color = "red";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Por favor, não insirá números."
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    }
     else if (nome.value.trim().length <= 2){
         textoNome.style.color = "red";
         enviado.style.display = "block";
@@ -99,13 +112,17 @@ function validarNome(){
         enviado.style.border = "red";
     } 
     else if (nome.value.trim() != "" && 
-             nome.value.trim().length >= 3 ) 
+             nome.value.trim().length >= 3 &&
+             apenasLetras.test(nome.value)) 
     {
         textoNome.style.color = "rgb(194, 247, 194)";
         enviado.style.display = "none";
+        validNome = true;
     }
 }
 
+
+// Alerta depois do @
 function validarEmail(){
     if (email.value.trim() === ""){
         textoEmail.style.color = "red";
@@ -115,16 +132,42 @@ function validarEmail(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
-    } else if (email.value.trim().length <= 2){
+    } 
+    else if (email.value.trim().length <= 5){
         textoEmail.style.color = "red";
         enviado.style.display = "block";
-        enviado.innerHTML = "Por favor, digite um nome maior que 2 letras."
+        enviado.innerHTML = "Por favor, digite um email maior que 5 letras."
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
     } 
+    else if (!email.value.includes('@')){
+        textoEmail.style.color = "red";
+        enviado.style.display = "block";
+        enviado.innerHTML = "O email deve conter caractere '@'.";
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    } 
+    else if (depoisArroba === "") {
+            textoEmail.style.color = "red";
+            enviado.style.display = "block";
+            enviado.innerHTML = "O email deve ter um domínio válido (ex.: exemplo@dominio.com).";
+            enviado.style.background = "rgba(255, 175, 175, 1)";
+            enviado.style.color = "rgba(14, 14, 14, 1)";
+            enviado.style.border = "red";
+    }
+    else if (depoisArroba.indexOf('.') === -1) {
+        textoEmail.style.color = "red";
+        enviado.style.display = "block";
+        enviado.innerHTML = "O domínio do email deve conter um ponto (ex.: dominio.com).";
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    }
     else if (email.value.trim() != "" && 
-             email.value.trim().length >= 3 ) 
+             email.value.trim().length >= 6 &&
+             email.value.includes('@')) 
     {
         textoEmail.style.color = "rgb(194, 247, 194)";
         enviado.style.display = "none";
