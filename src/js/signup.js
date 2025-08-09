@@ -215,6 +215,7 @@ function validarSenha(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validSenha = false;
     } 
     else if (senha.value.trim().length <= 4){
         textoSenha.style.color = "red";
@@ -223,6 +224,7 @@ function validarSenha(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validSenha = false;
     } 
     else if(!temLetra.test(senha.value)){
         textoSenha.style.color = "red";
@@ -231,6 +233,7 @@ function validarSenha(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validSenha = false;
     }
     else if(!temNumero.test(senha.value) && !temCaractereEspecial.test(senha.value)){
         textoSenha.style.color = "red";
@@ -239,10 +242,12 @@ function validarSenha(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validSenha = false;
     }
     else {
         textoSenha.style.color = "rgb(194, 247, 194)";
         enviado.style.display = "none";
+        validSenha = true;
     }
 }
 
@@ -282,9 +287,10 @@ function EnviarLogin(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
-
-        return;
-    } 
+        
+        return false; // Impede o envio do formulário
+    }
+    return true;
 }
 
 function MudarLogin(){
@@ -292,7 +298,3 @@ function MudarLogin(){
    enviado.innerHTML = "Carregando para aba de Login..."
 }
 
-function MudarCadastro(){
-    enviado.style.display = "block";
-    enviado.innerHTML = "Carregando para aba de Cadastro...";
-}

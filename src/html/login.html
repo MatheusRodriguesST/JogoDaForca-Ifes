@@ -18,13 +18,13 @@
 
          <!-- Informação - Email -->
          <div class="email-container">
-            <div class="texto">Email:</div>
+            <div class="texto" id="textoEmail">Email:</div>
             <input type="email" id="email" placeholder="seu-email@exemplo.com">
          </div>
 
          <!-- Informação - Senha -->
          <div class="senha-container">
-            <div class="texto">Senha:</div>
+            <div class="texto" id="textoSenha">Senha:</div>
             <div id="senha-hidder">
             <input type="password" id="senha1" placeholder="Sua senha">
             <img src="../img/eyeclosed.svg" alt="hidder" srcset="" id="hidder">
@@ -32,11 +32,11 @@
          </div>
 
          <!-- Botão para envio do formulário -->
-         <button type="submit" class="botao-login">Entrar</button>
+         <button type="submit" class="botao-login" >Entrar</button>
 
          <hr>
 
-         <p>Não tem uma conta? <a href="signup.html" onclick="MudarCadastro()">Cadastro</a></p>
+         <p>Não tem uma conta? <a href="signup.html" onclick="MudarCadastro(event)">Cadastro</a></p>
       </div>
    </form>
 
