@@ -271,43 +271,20 @@ function validarConfirmarSenha(){
 
 // Informar se o login é válido
 function EnviarLogin(){
-    // Mudar o nome
-    if (nome.value === ""){
-        // Texto do nome
+    if (!validNome || !validEmail || !validSenha || !validConfirmarSenha) {
         textoNome.style.color = "red";
+        textoEmail.style.color = "red";
+        textoSenha.style.color = "red";
+        textoConfirmarSenha.style.color = "red";
 
-        // Div com o resultado
         enviado.style.display = "block";
-        enviado.innerHTML = "Os campos estão vazios, insira um valor válido."
+        enviado.innerHTML = "Por favor, corrija os campos inválidos antes de enviar."
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
 
-    } else {
-        textoNome.style.color = "rgba(202, 254, 209, 1)";
-        enviado.style.display = "none";
-    }
-
-    // Mudar o email
-    if (email.value === ""){
-        textoEmail.style.color = "red";
-    } else {
-        textoEmail.style.color = "green";
-    }
-
-    // Mudar a senha
-    if (senha.value === ""){
-        textoSenha.style.color = "red";
-    } else {
-        textoSenha.style.color = "green";
-    }
-
-    // Mudar a confirmação de senha
-    if (confirmarSenha.value === ""){
-        textoConfirmarSenha.style.color = "red";
-    } else {
-        textoConfirmarSenha.style.color = "green";
-    }
+        return;
+    } 
 }
 
 function MudarLogin(){
