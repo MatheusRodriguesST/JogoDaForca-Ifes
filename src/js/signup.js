@@ -58,6 +58,18 @@ const enviado = document.getElementById("enviado");
 // Apenas Letras Incluido
 const apenasLetras = /^[A-Za-zÀ-ÿ\s]*$/;
 
+// Pelo menos uma letra
+const temLetra = /[A-Za-z]/; 
+
+// Pelo menos um número
+const temNumero = /\d/; 
+
+// Pelo menos um caractere especial
+const temCaractereEspecial = /[!@#$%^&*]/; 
+
+// Apenas letras, números e caracteres especiais
+const caracteresPermitidos = /^[A-Za-z\d!@#$%^&*]*$/; 
+
 // Declaração do input e texto - nome
 const nome = document.getElementById("nome");
 const textoNome = document.getElementById("textoNome");
@@ -69,8 +81,6 @@ const email = document.getElementById("email");
 const textoEmail = document.getElementById("textoEmail");
 let validEmail = false;
 email.addEventListener('keyup', validarEmail);
-
-const depoisArroba = email.value.substring(indiceArroba + 1);
 
 // Declaração do input e texto - senha
 const senha = document.getElementById("senha");
@@ -94,6 +104,7 @@ function validarNome(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validNome = false;
     } 
     else if (!apenasLetras.test(nome.value)){
         textoNome.style.color = "red";
@@ -102,6 +113,7 @@ function validarNome(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validNome = false;
     }
     else if (nome.value.trim().length <= 3){
         textoNome.style.color = "red";
@@ -110,20 +122,19 @@ function validarNome(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validNome = false;
     } 
-    else if (nome.value.trim() != "" && 
-             nome.value.trim().length >= 4 &&
-             apenasLetras.test(nome.value)) 
-    {
+    else {
         textoNome.style.color = "rgb(194, 247, 194)";
         enviado.style.display = "none";
         validNome = true;
     }
 }
 
-
-// Alerta depois do @
 function validarEmail(){
+    const depoisArroba = email.value.substring(email.value.indexOf('@') + 1);
+    const depoisPonto = email.value.substring(email.value.indexOf('.') + 1);
+
     if (email.value.trim() === ""){
         textoEmail.style.color = "red";
         email.value = "";
@@ -132,6 +143,7 @@ function validarEmail(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validEmail = false;
     } 
     else if (email.value.trim().length <= 5){
         textoEmail.style.color = "red";
@@ -140,6 +152,7 @@ function validarEmail(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validEmail = false;
     } 
     else if (!email.value.includes('@')){
         textoEmail.style.color = "red";
@@ -148,29 +161,48 @@ function validarEmail(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validEmail = false;
     } 
-    else if (depoisArroba === "") {
-            textoEmail.style.color = "red";
-            enviado.style.display = "block";
-            enviado.innerHTML = "O email deve ter um domínio válido (ex.: exemplo@dominio.com).";
-            enviado.style.background = "rgba(255, 175, 175, 1)";
-            enviado.style.color = "rgba(14, 14, 14, 1)";
-            enviado.style.border = "red";
-    }
-    else if (depoisArroba.indexOf('.') === -1) {
+    else if (depoisArroba.trim() === "") {
         textoEmail.style.color = "red";
         enviado.style.display = "block";
-        enviado.innerHTML = "O domínio do email deve conter um ponto (ex.: dominio.com).";
+        enviado.innerHTML = "O email deve ter um domínio válido. <br> (ex.: exemplo@dominio.com).";
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validEmail = false;
+    } 
+    else if (depoisArroba.trim().length <= 2){
+        textoEmail.style.color = "red";
+        enviado.style.display = "block";
+        enviado.innerHTML = "O email deve ter um domínio maior que 2 letras. <br> (ex.: exemplo@dominio.com).";
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+        validEmail = false;
     }
-    else if (email.value.trim() != "" && 
-             email.value.trim().length >= 6 &&
-             email.value.includes('@')) 
-    {
+    else if (!depoisArroba.includes('.')) {
+        textoEmail.style.color = "red";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Um email deve ter um dominio válido. <br> (ex.: .com, .org, .net).";
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+        validEmail = false;
+    } 
+    else if (depoisPonto.trim().length <= 2){
+        textoEmail.style.color = "red";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Digite um domínio maior que 2 letras. <br> (ex.: .com, .org, .net).";
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+        validEmail = false;
+    }
+    else {
         textoEmail.style.color = "rgb(194, 247, 194)";
         enviado.style.display = "none";
+        validEmail = true;
     }
 }
 
@@ -183,17 +215,32 @@ function validarSenha(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
-    } else if (senha.value.trim().length <= 2){
+    } 
+    else if (senha.value.trim().length <= 4){
         textoSenha.style.color = "red";
         enviado.style.display = "block";
-        enviado.innerHTML = "Por favor, digite um nome maior que 2 letras."
+        enviado.innerHTML = "Por favor, digite um nome maior que 4 letras.";
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
     } 
-    else if (senha.value.trim() != "" && 
-             senha.value.trim().length >= 3 ) 
-    {
+    else if(!temLetra.test(senha.value)){
+        textoSenha.style.color = "red";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Insira ao menos uma letra."
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    }
+    else if(!temNumero.test(senha.value) && !temCaractereEspecial.test(senha.value)){
+        textoSenha.style.color = "red";
+        enviado.style.display = "block";
+        enviado.innerHTML = "Insira um número e/ou caractere especial <br> (ex.: @, -, !)."
+        enviado.style.background = "rgba(255, 175, 175, 1)";
+        enviado.style.color = "rgba(14, 14, 14, 1)";
+        enviado.style.border = "red";
+    }
+    else {
         textoSenha.style.color = "rgb(194, 247, 194)";
         enviado.style.display = "none";
     }
@@ -208,17 +255,15 @@ function validarConfirmarSenha(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
-    } else if (confirmarSenha.value.trim().length <= 2){
+    } else if (confirmarSenha.value != senha.value){
         textoConfirmarSenha.style.color = "red";
         enviado.style.display = "block";
-        enviado.innerHTML = "Por favor, digite um nome maior que 2 letras."
+        enviado.innerHTML = "As senhas diferem."
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
     } 
-    else if (confirmarSenha.value.trim() != "" && 
-             confirmarSenha.value.trim().length >= 3 ) 
-    {
+    else {
         textoConfirmarSenha.style.color = "rgb(194, 247, 194)";
         enviado.style.display = "none";
     }
