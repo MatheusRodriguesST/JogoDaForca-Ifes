@@ -14,8 +14,11 @@ function LoginUsuario(event) {
     const usuario = usuarios.find(user => user.email === email && user.senha === senha);
 
     if (usuario) {
-        alert(`Login bem-sucedido! Bem-vindo, ${usuario.nome}!`);
+        alert(`Login bem-sucedido! Bem-vindo, ${usuario.nome}! Clique no OK para continuar`);
         // código para fazer depois que o login for bem sucedido
+        setTimeout(() => {
+        window.location.href = "../html/index.html";
+    }, 1000);
     } else {
         //alera o limpa oque foi escrito depois 
         alert('Email ou senha incorretos!');
@@ -186,6 +189,7 @@ function validarSenha(){
         textoSenha.style.color = "rgb(194, 247, 194)";
         enviado.style.display = "none";
         validSenha = true;
+        
     }
 }
 
