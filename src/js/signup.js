@@ -4,6 +4,17 @@
 function cadastrarUsuario(event) {
     event.preventDefault(); // proibi a página de atualizar
 
+    // Executa as validações antes de prosseguir
+    validarNome();
+    validarEmail();
+    validarSenha();
+    validarConfirmarSenha();
+
+    if (!validNome || !validEmail || !validSenha || !validConfirmarSenha) {
+        EnviarLogin(); // Exibe mensagem de erro genérica
+        return;
+    }
+
     const nome = document.getElementById('nome').value.trim(); //pega o nome do formulário
     const email = document.getElementById('email').value.trim(); // pega o email do formulário
     const senha = document.getElementById('senha').value; //senha e confirmar senha
@@ -220,7 +231,7 @@ function validarSenha(){
     else if (senha.value.trim().length <= 4){
         textoSenha.style.color = "red";
         enviado.style.display = "block";
-        enviado.innerHTML = "Por favor, digite um nome maior que 4 letras.";
+        enviado.innerHTML = "Por favor, digite uma senha maior que 4 caracteres.";
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
@@ -260,6 +271,7 @@ function validarConfirmarSenha(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validConfirmarSenha = false;
     } else if (confirmarSenha.value != senha.value){
         textoConfirmarSenha.style.color = "red";
         enviado.style.display = "block";
@@ -267,20 +279,46 @@ function validarConfirmarSenha(){
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
+        validConfirmarSenha = false;
     } 
     else {
         textoConfirmarSenha.style.color = "rgb(194, 247, 194)";
         enviado.style.display = "none";
+        validConfirmarSenha = true;
     }
 }
 
 // Informar se o login é válido
 function EnviarLogin(){
     if (!validNome || !validEmail || !validSenha || !validConfirmarSenha) {
-        textoNome.style.color = "red";
-        textoEmail.style.color = "red";
-        textoSenha.style.color = "red";
-        textoConfirmarSenha.style.color = "red";
+
+        // Validação exclusiva do nome
+        if (!validNome){
+            textoNome.style.color = "red";
+        } else {
+            textoNome.style.color = "rgb(194, 247, 194)";
+        }
+        
+         // Validação exclusiva do Email
+        if (!validEmail){
+            textoEmail.style.color = "red";
+        } else {
+            textoEmail.style.color = "rgb(194, 247, 194)";
+        }
+        
+         // Validação exclusiva da Senha
+        if (!validSenha){
+            textoSenha.style.color = "red";
+        } else {
+            textoSenha.style.color = "rgb(194, 247, 194)";
+        }
+        
+         // Validação exclusiva do Confirmar Senha
+        if (!validConfirmarSenha){
+            textoConfirmarSenha.style.color = "red";
+        } else {
+            textoConfirmarSenha.style.color = "rgb(194, 247, 194)";
+        }
 
         enviado.style.display = "block";
         enviado.innerHTML = "Por favor, corrija os campos inválidos antes de enviar."
@@ -289,8 +327,11 @@ function EnviarLogin(){
         enviado.style.border = "red";
         
         return false; // Impede o envio do formulário
+    } 
+    else {
+        enviado.style.display = "none";
+        return true;
     }
-    return true;
 }
 
 function MudarLogin(){
