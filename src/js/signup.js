@@ -55,6 +55,7 @@ function cadastrarUsuario(event) {
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
     console.log("Usuário cadastrado com sucesso!");
     window.location.href = "../html/index.html"; // redireciona para a página do jogo
+    MudarLogin(); // Redireciona para o Login
 }
 
 document.getElementById('formCadastro').addEventListener('submit', cadastrarUsuario); // vincula a função ao botão
@@ -367,7 +368,7 @@ function cadastrarUsuario(event) {
     enviado.style.background = "rgba(194, 247, 194, 1)";
     enviado.style.color = "rgba(14, 14, 14, 1)";
     enviado.style.border = "green";
-    enviado.innerHTML = "Cadastro realizado com sucesso! Redirecionando para login...";
+    enviado.innerHTML = "Cadastro realizado com sucesso! Redirecionando para o jogo...";
 
     // Limpa campos
     nome.value = "";
@@ -383,3 +384,23 @@ function cadastrarUsuario(event) {
 
 // Event listener para o formulário
 document.getElementById('formCadastro').addEventListener('submit', cadastrarUsuario);
+
+function MudarLogin(){
+    // Mensagem de sucesso
+    enviado.style.display = "block";
+    enviado.style.background = "rgba(194, 247, 194, 1)";
+    enviado.style.color = "rgba(14, 14, 14, 1)";
+    enviado.style.border = "green";
+    enviado.innerHTML = "Redirecionando para Login...";
+
+    // Limpa campos
+    nome.value = "";
+    email.value = "";
+    senha.value = "";
+    confirmarSenha.value = "";
+
+    // Redireciona após 2 segundos
+    setTimeout(() => {
+        window.location.href = "../html/login.html";
+    }, 2000);
+}

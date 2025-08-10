@@ -3,6 +3,15 @@
 function LoginUsuario(event) {
     event.preventDefault(); // proibi a página de atualizar
 
+    // Executa as validações antes de prosseguir
+    validarEmail();
+    validarSenha();
+
+    if (!validEmail || !validSenha) {
+        EnviarLogin(); // Exibe mensagem de erro genérica
+        return;
+    }
+
     // pega os valores do formulário
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha1').value;
@@ -196,8 +205,20 @@ function validarSenha(){
 // Informar se o login é válido
 function EnviarLogin() {
     if (!validEmail || !validSenha) {
-        textoEmail.style.color = "red";
-        textoSenha.style.color = "red";
+        // Validação exclusiva do Email
+        if (!validEmail){
+            textoEmail.style.color = "red";
+        } else {
+            textoEmail.style.color = "rgb(194, 247, 194)";
+        }
+        
+         // Validação exclusiva da Senha
+        if (!validSenha){
+            textoSenha.style.color = "red";
+        } else {
+            textoSenha.style.color = "rgb(194, 247, 194)";
+        }
+
         enviado.style.display = "block";
         enviado.innerHTML = "Por favor, corrija os campos inválidos antes de enviar.";
         enviado.style.background = "rgba(255, 175, 175, 1)";
@@ -208,8 +229,22 @@ function EnviarLogin() {
     return true; 
 }
 
-// MUDAR COR DA DIV PRO ALERTA
+// Muda para o Cadastro
 function MudarCadastro(){
+    // Mensagem de sucesso
     enviado.style.display = "block";
-    enviado.innerHTML = "Carregando para aba de Cadastro...";
+    enviado.style.background = "rgba(194, 247, 194, 1)";
+    enviado.style.color = "rgba(14, 14, 14, 1)";
+    enviado.style.border = "green";
+    enviado.innerHTML = "Redirecionando para Cadastro...";
+
+    // Limpa campos
+    email.value = "";
+    senha.value = "";
+
+    // Redireciona após 2 segundos
+    setTimeout(() => {
+        window.location.href = "../html/signup.html";
+    }, 2000);
+
 }
