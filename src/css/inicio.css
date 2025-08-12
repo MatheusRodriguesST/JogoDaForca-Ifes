@@ -1,3 +1,8 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
 body{
     width: 100%;
     height: 100vh;
@@ -5,11 +10,13 @@ body{
 }
 
 nav{
-    background: rgb(112, 112, 197);
+    background: rgb(70, 70, 122);
     padding: 10px;
     align-items: center;
     display: flex;
+    justify-content: space-around;
     justify-items: center;
+    height: 8vh;
 }
 
 a{
@@ -17,11 +24,30 @@ a{
     text-decoration: none;
     margin: 15px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 a:hover{
     color: rgb(173, 228, 228);
+    font-size: 21px;
     transition: all .4s ease-out;
-    font-size: 20px;
+    
 }
+
+main {
+    background: url("../img/FundoTelaInicial.png") no-repeat center; 
+    background-size: cover;
+    height: 92vh;
+    width: 100%;
+}
+
+.lista-Navegar{
+    list-style: none;
+    display: flex;
+}
+
+.lista-Navegar li {
+    letter-spacing: 3px;
+    margin: 80px;
+}
+
