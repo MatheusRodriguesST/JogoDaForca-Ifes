@@ -1,0 +1,171 @@
+body { 
+    font-family: Arial; 
+    text-align: center; 
+    background-color: #f0f0f0; 
+    margin: 0; 
+    padding: 20px; 
+    background-image: url(WhatsApp\ Image\ 2025-08-18\ at\ 09.24.52.jpeg);
+}
+h1 { 
+    color: #f0f0f0; 
+    font-size: 42px; 
+    margin-bottom: 10px; 
+    font-family: cursive; 
+}
+p { 
+    color: white; 
+    font-size: 21px; 
+    margin: 13px; 
+}
+input { 
+    padding: 10px; 
+    font-size: 16px; 
+    margin: 10px; 
+    width: 200px; 
+    border: 2px solid #bdbdbd; 
+    border-radius: 5px; 
+}
+input:focus { 
+    border-color: #007bff; 
+    outline: none; 
+}
+button { 
+    padding: 10px; 
+    font-size: 16px; 
+    background-color: #bdbdbd; 
+    color: black; 
+    border: none; 
+    border-radius: 5px; 
+    margin: 5px; 
+    cursor: pointer; 
+    touch-action: manipulation; 
+}
+button:hover { 
+    background-color: #9e9e9e; 
+}
+button:disabled { 
+    background-color: #ccc; 
+    cursor: not-allowed; 
+}
+#mostrar-palavra { 
+    font-size: 24px; 
+    letter-spacing: 5px; 
+    margin: 20px; 
+    font-weight: bold; 
+    color: white; 
+}
+#teclado { 
+    width: 600px; 
+    margin: auto; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#teclado button { 
+    width: 40px; 
+    height: 40px; 
+    font-size: 18px; 
+    background-color: #bdbdbd; 
+    margin: 5px; 
+}
+#mensagem-jogo { 
+    font-size: 20px; 
+    margin: 20px; 
+    color: #28a745; 
+    font-weight: bold; 
+}
+.mensagem-erro { 
+    color: #dc3545; 
+    display: none; 
+    margin-top: 10px; 
+}
+#tela-inicial { 
+    margin-top: 300px; 
+    background: rgba(0, 0, 0, 0.6); 
+    border-radius: 10px; 
+    padding: 15px; 
+}
+#tela-jogo { 
+    margin-top: 200px; 
+    background: rgba(0, 0, 0, 0.6); 
+    border-radius: 10px; 
+    padding: 15px; 
+}
+
+/* Overlay resultado */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center; 
+    align-items: center;
+}
+#overlay-content {
+    background: black;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+#titulo-resultado.win { 
+    color: green; 
+}
+#titulo-resultado.lose { 
+    color: red; 
+}
+
+/* Media Queries para dispositivos móveis */
+@media (max-width: 600px) {
+    h1 { 
+        font-size: 24px; 
+    }
+    p { 
+        font-size: 16px; 
+        margin: 10px; 
+    }
+    input { 
+        width: 150px; 
+        font-size: 14px; 
+        padding: 8px; 
+    }
+    button { 
+        padding: 8px; 
+        font-size: 14px; 
+    }
+    #teclado { 
+        width: 95%; 
+        max-width: 400px; 
+    }
+    #teclado button { 
+        width: 30px; 
+        height: 30px; 
+        font-size: 14px; 
+        margin: 3px; 
+    }
+    #mostrar-palavra { 
+        font-size: 18px; 
+        letter-spacing: 3px; 
+    }
+    #mensagem-jogo { 
+        font-size: 16px; 
+        margin: 15px; 
+    }
+    #tela-inicial { 
+        margin-top: 15vh; 
+        padding: 10px; 
+    }
+    #tela-jogo { 
+        margin-top: 10vh; 
+        padding: 10px; 
+    }
+    #overlay-content { 
+        padding: 15px; 
+        max-width: 300px; 
+        width: 95%; 
+    }
+}
