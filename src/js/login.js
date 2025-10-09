@@ -170,7 +170,7 @@ function validarSenha(){
     else if (senha.value.trim().length <= 4){
         textoSenha.style.color = "red";
         enviado.style.display = "block";
-        enviado.innerHTML = "Por favor, digite um nome maior que 4 letras.";
+        enviado.innerHTML = "Por favor, digite uma senha maior que 4 letras.";
         enviado.style.background = "rgba(255, 175, 175, 1)";
         enviado.style.color = "rgba(14, 14, 14, 1)";
         enviado.style.border = "red";
