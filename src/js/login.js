@@ -246,5 +246,23 @@ function MudarCadastro(){
     setTimeout(() => {
         window.location.href = "../html/signup.html";
     }, 2000);
+}
 
+// Muda para Recuperar Senha
+function MudarRecuperarSenha(){
+    // Mensagem de sucesso
+    enviado.style.display = "block";
+    enviado.style.background = "rgba(194, 247, 194, 1)";
+    enviado.style.color = "rgba(14, 14, 14, 1)";
+    enviado.style.border = "green";
+    enviado.innerHTML = "Redirecionando para Recuperar Senha...";
+
+    // Limpa campos
+    email.value = "";
+    senha.value = "";
+
+    // Redireciona após 2 segundos
+    setTimeout(() => {
+        window.location.href = "../html/RecoverPassword.html";
+    }, 2000);
 }
