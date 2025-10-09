@@ -1,33 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela Inicial</title>
+    <title>Tela Inicial - Jogo da Forca</title>
     <link rel="stylesheet" href="../css/inicio.css">
 </head>
 <body>
     <header>
-        <!-- Inicio Barra de navegação -->
+        <!-- Barra de navegação -->
         <nav>
-            <!-- Inicio Lista para a navegação -->
-            <ul class="lista-Navegar">
-                <li> <a href="../html/login.html">Login</a> </li>       <!-- Link para tela de Login -->
-                <li> <a href="../html/signup.html">Cadastro</a> </li>   <!-- Link para tela de Cadastro -->
-                <li> <a href="#">Recuperar Senha</a> </li>              <!-- Link para tela de Recuperar Senha -->
-                <li> <a href="#">Sobre</a> </li>  
-                <li> <a class="hora" id="hora" href="/">Hora 10:00:00</a> </li>                      <!-- Link para tela de Sobre -->
+            <!-- Ícone do menu hamburger (visível apenas em telas pequenas) -->
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- Lista para a navegação (escondida em telas pequenas por default) -->
+            <ul class="lista-Navegar" id="nav-menu">
+                <li><a href="../html/login.html">Login</a></li>       <!-- Link para tela de Login -->
+                <li><a href="../html/signup.html">Cadastro</a></li>   <!-- Link para tela de Cadastro -->
+                <li><a href="#">Recuperar Senha</a></li>              <!-- Link para tela de Recuperar Senha -->
+                <li><a href="#">Sobre</a></li>                        <!-- Link para tela de Sobre -->
             </ul>
-            <!-- Fim Lista para a navegação -->
-
-                              <!-- Hora atual na tela -->
+            
+            <!-- Hora sempre visível -->
+            <span class="hora" id="hora">Hora 00:00:00</span>
         </nav>
-        <!-- Fim Barra de navegação -->
-     </header>
+    </header>
 
-     <main>
-     </main>
+    <main>
+        <div class="conteudo-principal">
+            <h1>Bem-vindo ao Jogo da Forca!</h1>
+            <p>Um clássico jogo de adivinhação de palavras. Escolha letras para descobrir a palavra secreta antes que o bonequinho seja enforcado. Faça login ou cadastre-se para começar a jogar!</p>
+            <p class="regra">Regras básicas:</p>
+            <ul>
+                <li>Você tem 6 tentativas para adivinhar a palavra.</li>
+                <li>Letras erradas adicionam partes ao boneco.</li>
+                <li>Acertos revelam as letras na palavra.</li>
+            </ul>
+            <a href="../html/index (4).html" class="botao-jogar">Jogar Agora!</a> <!-- Adicionei um link fictício para o jogo -->
+        </div>
+    </main>
 
-     <script src="../js/inicio.js"></script>
+    <script src="../js/inicio.js"></script>
 </body>
 </html>
