@@ -239,3 +239,28 @@ input {
 hr {
     width: 80%;
 }
+
+/* =================== Ajuste do olho =================== */
+#rp-senha-hidder {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    align-items: center;
+  }
+  
+  #rp-senha-hidder input {
+    width: 100%;
+    padding-right: 40px;
+  }
+  
+  #rp-hidder {
+    width: 27px;
+    height: 27px;
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+    max-width: none !important;
+    user-select: none;
+  }
+  

@@ -26,7 +26,7 @@ function LoginUsuario(event) {
         alert(`Login bem-sucedido! Bem-vindo, ${usuario.nome}! Clique no OK para continuar`);
         // código para fazer depois que o login for bem sucedido
         setTimeout(() => {
-        window.location.href = "../html/index.html";
+        window.location.href = "../html/jogo.html";
     }, 1000);
     } else {
         //alera o limpa oque foi escrito depois 

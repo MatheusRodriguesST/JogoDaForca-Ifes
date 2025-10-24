@@ -1,1 +1,1 @@
-//Código responsavel pelo jogo no Index.html
+//Código responsavel pelo jogo no jogo.html

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Forca - 2 Jogadores</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Tela inicial -->
+    <div id="tela-inicial">
+        <h1>Jogo da Forca - 2 Jogadores</h1>
+        <p>Jogador 1, digite a palavra secreta:</p>
+        <input id="entrada" type="password" placeholder="Ex.:maçã" autocomplete="off">
+        <button id="botao-iniciar">Começar Jogo</button>
+        <button id="botao-limpar">Limpar</button>
+        <p id="mensagem-erro" class="mensagem-erro"></p>
+    </div>
+
+    <!-- Tela do jogo -->
+    <div id="tela-jogo" style="display:none;">
+        <p id="hora"></p>
+        <h1>Jogo da Forca</h1>
+        <canvas id="forca-canvas" width="300" height="300"></canvas>
+        <p id="mostrar-palavra"></p>
+        <p id="contador-erros">Erros: 0/6</p>
+        <p id="mensagem-jogo"></p>
+        <div id="teclado"></div>
+        <button id="botao-reiniciar" style="display:none;">Nova Palavra</button>
+        <button id="botao-desistir">Desistir</button>
+    </div>
+
+    <!-- Overlay de resultado -->
+    <div id="overlay">
+        <div id="overlay-content">
+            <h2 id="titulo-resultado"></h2>
+            <p id="texto-resultado"></p>
+            <p><strong>Palavra:</strong> <span id="palavra-final"></span></p>
+            <button id="voltar-inicio">Voltar ao início</button>
+            <button id="jogar-novamente">Jogar novamente</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script scr="styles.css"></script>
+</body>
+</html>

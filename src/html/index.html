@@ -3,45 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Forca - 2 Jogadores</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Tela Inicial - Jogo da Forca</title>
+    <link rel="stylesheet" href="../css/inicio.css">
 </head>
 <body>
-    <!-- Tela inicial -->
-    <div id="tela-inicial">
-        <h1>Jogo da Forca - 2 Jogadores</h1>
-        <p>Jogador 1, digite a palavra secreta:</p>
-        <input id="entrada" type="password" placeholder="Ex.:maçã" autocomplete="off">
-        <button id="botao-iniciar">Começar Jogo</button>
-        <button id="botao-limpar">Limpar</button>
-        <p id="mensagem-erro" class="mensagem-erro"></p>
-    </div>
+    <header>
+        <!-- Barra de navegação -->
+        <nav>
+            <!-- Ícone do menu hamburger (visível apenas em telas pequenas) -->
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- Lista para a navegação (escondida em telas pequenas por default) -->
+            <ul class="lista-Navegar" id="nav-menu">
+                <li><a href="../html/login.html">Login</a></li>       <!-- Link para tela de Login -->
+                <li><a href="../html/signup.html">Cadastro</a></li>   <!-- Link para tela de Cadastro -->
+                <li><a href="../html/RecoverPassword.html">Recuperar Senha</a></li>              <!-- Link para tela de Recuperar Senha -->
+                <li><a href="#">Sobre</a></li>                        <!-- Link para tela de Sobre -->
+            </ul>
+            
+            <!-- Hora sempre visível -->
+            <span class="hora" id="hora">Hora 00:00:00</span>
+        </nav>
+    </header>
 
-    <!-- Tela do jogo -->
-    <div id="tela-jogo" style="display:none;">
-        <p id="hora"></p>
-        <h1>Jogo da Forca</h1>
-        <canvas id="forca-canvas" width="300" height="300"></canvas>
-        <p id="mostrar-palavra"></p>
-        <p id="contador-erros">Erros: 0/6</p>
-        <p id="mensagem-jogo"></p>
-        <div id="teclado"></div>
-        <button id="botao-reiniciar" style="display:none;">Nova Palavra</button>
-        <button id="botao-desistir">Desistir</button>
-    </div>
-
-    <!-- Overlay de resultado -->
-    <div id="overlay">
-        <div id="overlay-content">
-            <h2 id="titulo-resultado"></h2>
-            <p id="texto-resultado"></p>
-            <p><strong>Palavra:</strong> <span id="palavra-final"></span></p>
-            <button id="voltar-inicio">Voltar ao início</button>
-            <button id="jogar-novamente">Jogar novamente</button>
+    <main>
+        <div class="conteudo-principal">
+            <h1>Bem-vindo ao Jogo da Forca!</h1>
+            <p>Um clássico jogo de adivinhação de palavras. Escolha letras para descobrir a palavra secreta antes que o bonequinho seja enforcado. Faça login ou cadastre-se para começar a jogar!</p>
+            <p class="regra">Regras básicas:</p>
+            <ul>
+                <li>Você tem 6 tentativas para adivinhar a palavra.</li>
+                <li>Letras erradas adicionam partes ao boneco.</li>
+                <li>Acertos revelam as letras na palavra.</li>
+            </ul>
+            <a href="../html/jogo.html" class="botao-jogar">Jogar Agora!</a> <!-- Adicionei um link fictício para o jogo -->
         </div>
-    </div>
+    </main>
 
-    <script src="script.js"></script>
-    <script scr="styles.css"></script>
+    <script src="../js/inicio.js"></script>
 </body>
 </html>

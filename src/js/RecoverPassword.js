@@ -1,105 +1,134 @@
-// recuperar.js
+// RecoverPassword.js
 
-// Declaração do input e texto - email
-const email = document.getElementById("email");
-const textoEmail = document.getElementById("textoEmail");
-const enviado = document.getElementById("enviado");
-let validEmail = false;
 
-email.addEventListener('keyup', validarEmail);
-
-function validarEmail(){
-    const depoisArroba = email.value.substring(email.value.indexOf('@') + 1);
-    const depoisPonto = email.value.substring(email.value.indexOf('.') + 1);
-
-    if (email.value.trim() === ""){
-        textoEmail.style.color = "red";
-        email.value = "";
-        enviado.style.display = "block";
-        enviado.innerHTML = "Não pode começar com espaço, <br> por favor digite um valor válido."
-        enviado.style.background = "rgba(255, 175, 175, 1)";
-        enviado.style.color = "rgba(14, 14, 14, 1)";
-        enviado.style.border = "red";
-        validEmail = false;
-    } 
-    else if (email.value.trim().length <= 5){
-        textoEmail.style.color = "red";
-        enviado.style.display = "block";
-        enviado.innerHTML = "Por favor, digite um email maior que 5 letras."
-        enviado.style.background = "rgba(255, 175, 175, 1)";
-        enviado.style.color = "rgba(14, 14, 14, 1)";
-        enviado.style.border = "red";
-        validEmail = false;
-    } 
-    else if (!email.value.includes('@')){
-        textoEmail.style.color = "red";
-        enviado.style.display = "block";
-        enviado.innerHTML = "O email deve conter caractere '@'.";
-        enviado.style.background = "rgba(255, 175, 175, 1)";
-        enviado.style.color = "rgba(14, 14, 14, 1)";
-        enviado.style.border = "red";
-        validEmail = false;
-    } 
-    else if (depoisArroba.trim() === "") {
-        textoEmail.style.color = "red";
-        enviado.style.display = "block";
-        enviado.innerHTML = "O email deve ter um domínio válido. <br> (ex.: exemplo@dominio.com).";
-        enviado.style.background = "rgba(255, 175, 175, 1)";
-        enviado.style.color = "rgba(14, 14, 14, 1)";
-        enviado.style.border = "red";
-        validEmail = false;
-    } 
-    else if (depoisArroba.trim().length <= 2){
-        textoEmail.style.color = "red";
-        enviado.style.display = "block";
-        enviado.innerHTML = "O email deve ter um domínio maior que 2 letras. <br> (ex.: exemplo@dominio.com).";
-        enviado.style.background = "rgba(255, 175, 175, 1)";
-        enviado.style.color = "rgba(14, 14, 14, 1)";
-        enviado.style.border = "red";
-        validEmail = false;
+// Código responsavel pela recuperação de senha com código de verificação falso, gerado só para simulação, mas que funciona pelo alert
+(function () {
+    const form = document.getElementById('rp-form');
+    const rpEmail = document.getElementById('rp-email');
+    const rpEnviado = document.getElementById('rp-enviado');
+    const rpCodigoWrap = document.getElementById('rp-codigo-wrap');
+    const rpCodigoInput = document.getElementById('rp-codigo');
+    const rpVerificarCodigoBtn = document.getElementById('rp-verificar-codigo');
+    const rpNovaSenhaWrap = document.getElementById('rp-nova-senha-wrap');
+    const rpSenha = document.getElementById('rp-senha');
+    const rpConfirmarSenha = document.getElementById('rp-confirmar-senha');
+    const rpAtualizarSenhaBtn = document.getElementById('rp-atualizar-senha');
+    const rpHidder = document.getElementById('rp-hidder');
+  
+    let codigoGerado = null;
+    let emailEmProcesso = null;
+  
+    function emailValido(email) {
+      return /\S+@\S+\.\S+/.test(email);
     }
-    else if (!depoisArroba.includes('.')) {
-        textoEmail.style.color = "red";
-        enviado.style.display = "block";
-        enviado.innerHTML = "Um email deve ter um dominio válido. <br> (ex.: .com, .org, .net).";
-        enviado.style.background = "rgba(255, 175, 175, 1)";
-        enviado.style.color = "rgba(14, 14, 14, 1)";
-        enviado.style.border = "red";
-        validEmail = false;
-    } 
-    else if (depoisPonto.trim().length <= 2){
-        textoEmail.style.color = "red";
-        enviado.style.display = "block";
-        enviado.innerHTML = "Digite um domínio maior que 2 letras. <br> (ex.: .com, .org, .net).";
-        enviado.style.background = "rgba(255, 175, 175, 1)";
-        enviado.style.color = "rgba(14, 14, 14, 1)";
-        enviado.style.border = "red";
-        validEmail = false;
+  
+    function mostrarMensagem(texto, tipo = 'erro') {
+      rpEnviado.style.display = 'block';
+      rpEnviado.innerHTML = texto;
+      rpEnviado.style.background = tipo === 'ok'
+        ? 'rgba(194, 247, 194, 1)'
+        : 'rgba(255, 175, 175, 1)';
+      rpEnviado.style.color = '#111';
+      rpEnviado.style.border = tipo === 'ok'
+        ? '1px solid rgba(0,120,0,0.2)'
+        : '1px solid rgba(120,0,0,0.2)';
     }
-    else {
-        textoEmail.style.color = "rgb(194, 247, 194)";
-        enviado.style.display = "none";
-        validEmail = true;
+  
+    function esconderMensagem() {
+      rpEnviado.style.display = 'none';
     }
-}
-
-// Enviar Email
-function EnviarEmail(event) {
-    event.preventDefault(); // Previne o envio padrão do formulário
-    if (!validEmail) {
+  
+    function gerarCodigo() {
+      return String(Math.floor(100000 + Math.random() * 900000));
+    }
+  
+    function buscarUsuarioPorEmail(email) {
+      const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+      return usuarios.find(u => u.email === email) || null;
+    }
+  
+    function atualizarSenhaUsuario(email, novaSenha) {
+      const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+      const idx = usuarios.findIndex(u => u.email === email);
+      if (idx === -1) return false;
+      usuarios[idx].senha = novaSenha;
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+      return true;
+    }
+  
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      esconderMensagem();
+      const email = rpEmail.value.trim();
+  
+      if (!emailValido(email)) {
+        mostrarMensagem('Digite um e-mail válido.');
         return;
-    }
-    // Mensagem de sucesso
-    enviado.style.display = "block";
-    enviado.style.background = "rgba(194, 247, 194, 1)";
-    enviado.style.color = "rgba(14, 14, 14, 1)";
-    enviado.style.border = "green";
-    enviado.innerHTML = "Enviando Email...";
-
-    // Limpa campos
-    email.value = "";
-}
-
-// Anexa o evento de submit ao formulário
-const formRecuperar = document.getElementById("formRecuperar");
-formRecuperar.addEventListener('submit', EnviarEmail);
+      }
+  
+      const usuario = buscarUsuarioPorEmail(email);
+      if (!usuario) {
+        mostrarMensagem('Email não encontrado. Cadastre-se primeiro.');
+        return;
+      }
+  
+      codigoGerado = gerarCodigo();
+      emailEmProcesso = email;
+      alert(`Código de recuperação: ${codigoGerado}`);
+      mostrarMensagem('Código gerado (verifique o alerta).', 'ok');
+  
+      rpCodigoWrap.style.display = 'block';
+      rpNovaSenhaWrap.style.display = 'none';
+      rpCodigoInput.value = '';
+      rpCodigoInput.focus();
+    });
+  
+    rpVerificarCodigoBtn.addEventListener('click', () => {
+      esconderMensagem();
+      const cod = rpCodigoInput.value.trim();
+      if (cod !== codigoGerado) {
+        mostrarMensagem('Código incorreto.');
+        return;
+      }
+      mostrarMensagem('Código verificado! Defina sua nova senha.', 'ok');
+      rpNovaSenhaWrap.style.display = 'block';
+      rpSenha.focus();
+    });
+  
+    rpHidder.addEventListener('click', () => {
+      const isPassword = rpSenha.type === 'password';
+      rpSenha.type = isPassword ? 'text' : 'password';
+      rpHidder.src = isPassword ? '../img/eyeopen.svg' : '../img/eyeclosed.svg';
+    });
+  
+    rpAtualizarSenhaBtn.addEventListener('click', () => {
+      esconderMensagem();
+      const nova = rpSenha.value.trim();
+      const conf = rpConfirmarSenha.value.trim();
+  
+      if (!nova || !conf) {
+        mostrarMensagem('Preencha os dois campos.');
+        return;
+      }
+      if (nova !== conf) {
+        mostrarMensagem('As senhas não coincidem.');
+        return;
+      }
+      if (nova.length < 5) {
+        mostrarMensagem('Senha muito curta.');
+        return;
+      }
+  
+      const ok = atualizarSenhaUsuario(emailEmProcesso, nova);
+      if (!ok) {
+        mostrarMensagem('Erro ao salvar senha.');
+        return;
+      }
+  
+      mostrarMensagem('Senha atualizada com sucesso! Redirecionando...', 'ok');
+      setTimeout(() => {
+        window.location.href = "../html/login.html";
+      }, 2000);
+    });
+  })();
+  

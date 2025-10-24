@@ -54,7 +54,7 @@ function cadastrarUsuario(event) {
     usuarios.push(novoUsuario); //adiciona o novo usuário à lista de usuários e usa o JSON.stringfy para converter o objeto em uma string JSON
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
     console.log("Usuário cadastrado com sucesso!");
-    window.location.href = "../html/index.html"; // redireciona para a página do jogo
+    window.location.href = "../html/jogo.html"; // redireciona para a página do jogo
     MudarLogin(); // Redireciona para o Login
 }
 
@@ -378,7 +378,7 @@ function cadastrarUsuario(event) {
 
     // Redireciona após 2 segundos
     setTimeout(() => {
-        window.location.href = "../html/index.html";
+        window.location.href = "../html/jogo.html";
     }, 2000);
 }
 
