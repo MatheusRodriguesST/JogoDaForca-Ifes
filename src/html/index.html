@@ -1,123 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Créditos - Projeto do Jogo</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela Inicial - Jogo da Forca</title>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-  <div class="frame" role="main">
     <header>
-      <div class="title">
-        <div class="logo">PW</div>
-        <div>
-          <h1>Créditos do Projeto</h1>
-          <p class="lead">Página de créditos, agradecimentos e informações finais do jogo.</p>
-        </div>
-      </div>
-
-      <nav aria-label="Navegação de créditos">
-        <button class="nav-btn active" data-target="devs">Desenvolvedores</button>
-        <button class="nav-btn" data-target="thanks">Agradecimentos</button>
-        <button class="nav-btn" data-target="final">Créditos Finais</button>
-      </nav>
+        <!-- Barra de navegação -->
+        <nav>
+            <!-- Ícone do menu hamburger (visível apenas em telas pequenas) -->
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- Lista para a navegação (escondida em telas pequenas por default) -->
+            <ul class="lista-Navegar" id="nav-menu">
+                <li><a href="../html/login.html">Login</a></li>       <!-- Link para tela de Login -->
+                <li><a href="../html/signup.html">Cadastro</a></li>   <!-- Link para tela de Cadastro -->
+                <li><a href="../html/RecoverPassword.html">Recuperar Senha</a></li>              <!-- Link para tela de Recuperar Senha -->
+                <li><a href="../html/credito.html">Sobre</a></li>                        <!-- Link para tela de Sobre -->
+            </ul>
+            
+            <!-- Hora sempre visível -->
+            <span class="hora" id="hora">Hora 00:00:00</span>
+        </nav>
     </header>
 
     <main>
-      <!-- PÁGINA 1: DESENVOLVEDORES -->
-      <section id="devs" class="page active" aria-labelledby="devs-title">
-        <h2 id="devs-title">Equipe de Desenvolvimento</h2>
-        <div style="height:12px"></div>
-
-        <div class="devs" role="list">
-          <article class="card" role="listitem">
-            <img src="sofia.jpg" alt="Foto de criador" class="avatar" />
-            <h3>Sofia Alves Figueredo</h3>
-            <p>Telas de de login e cadastro e página inicial (frontend)</p>
-          </article>
-
-          <article class="card" role="listitem">
-            <img src="ludmila.jpg" alt="Foto do Criador 2" class="avatar" />
-            <h3>Ludmila Souza Santiago</h3>
-            <p>Backend e Frontend do jogo</p>
-          </article>
-
-          <article class="card" role="listitem">
-            <img src="matheus.jpg" alt="Foto do Criador 3" class="avatar" />
-            <h3>Matheus Santos Rodrigues</h3>
-            <p>Sistema de login e cadastro com local storage (BackEnd)</p>
-          </article>
-
-          <article class="card" role="listitem">
-            <img src="yasmim.jpg" alt="Foto do Criador 4" class="avatar" />
-            <h3>Yasmim Barbosa Lima</h3>
-            <p>Backend e Frontend da página de créditos</p>
-          </article>
+        <div class="conteudo-principal">
+            <h1>Bem-vindo ao Jogo da Forca!</h1>
+            <p>Um clássico jogo de adivinhação de palavras. Escolha letras para descobrir a palavra secreta antes que o bonequinho seja enforcado. Faça login ou cadastre-se para começar a jogar!</p>
+            <p class="regra">Regras básicas:</p>
+            <ul>
+                <li>Você tem 6 tentativas para adivinhar a palavra.</li>
+                <li>Letras erradas adicionam partes ao boneco.</li>
+                <li>Acertos revelam as letras na palavra.</li>
+            </ul>
+            <a href="../html/jogo.html" class="botao-jogar">Jogar Agora!</a> <!-- Adicionei um link fictício para o jogo -->
         </div>
-
-        <div style="height:14px"></div>
-
-        <div class="game-info">
-          <h3>Sobre o Jogo</h3>
-          <div class="meta">
-            <div class="item"><strong>Nome:</strong> Desafio da da forca</div>
-            <div class="item"><strong>Tipo:</strong> Jogo educativo (multiplataforma)</div>
-            <div class="item"><strong>Lançamento:</strong> 25/10/2025</div>
-          </div>
-
-          <div class="actions">
-            <button class="btn" onclick="location.href='index (4).html'">Voltar à Página Inicial</button>
-            <button class="btn secondary" onclick="downloadCredits()">Baixar Créditos (TXT)</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- PÁGINA 2: AGRADECIMENTOS -->
-      <section id="thanks" class="page" aria-labelledby="thanks-title">
-        <h2 id="thanks-title">Agradecimentos</h2>
-        <p class="small" style="margin-top:8px">
-          Agradecemos às pessoas e instituições que contribuíram com o projeto.
-        </p>
-
-        <div style="height:12px"></div>
-
-        <div class="list">
-          <div class="row"><div>Professor(a):</div><div><strong>Jonathan Toczek Souza</strong></div></div>
-          <div class="row"><div>Escola / Curso:</div><div><strong>Ifes Campus Serra-Informatica 3° Modulo</strong></div></div>
-          <div class="row"><div>Testadores:</div><div><strong>Amigos e colegas</strong></div></div>
-          <div class="row"><div>Recursos:</div><div><strong>Free assets / Imagens de exemplo</strong></div></div>
-        </div>
-      </section>
-
-      <!-- PÁGINA 3: CRÉDITOS FINAIS -->
-      <section id="final" class="page" aria-labelledby="final-title">
-        <h2 id="final-title">Créditos Finais</h2>
-
-        <div style="height:8px"></div>
-
-        <div class="game-info">
-          <p><strong>Equipe:</strong> Yasmim Barbosa, Sofia Alves, Ludmila Santiago, Matheus Santos Rodrigues</p>
-          <p><strong>Design & UI:</strong> Ludmila</p>
-          <p><strong>Desenvolvimento:</strong> Sofia</p>
-          <p><strong>Banco de Dados:</strong> Matheus</p>
-          <p><strong>Testes e Suporte:</strong> Yasmim</p>
-          <p style="margin-top:10px" class="small">Licença: Projeto educacional — uso livre com créditos à equipe.</p>
-
-          <div class="actions" style="margin-top:12px">
-            <button class="btn" onclick="printCredits()">Imprimir</button>
-            <button class="btn secondary" onclick="copyToClipboard()">Copiar Créditos</button>
-          </div>
-        </div>
-      </section>
     </main>
 
-    <footer style="margin-top:14px;text-align:center;color:var(--muted);font-size:13px">
-       — Projeto educacional.
-    </footer>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
-

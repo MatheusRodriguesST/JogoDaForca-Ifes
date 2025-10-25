@@ -1,25 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
 body { 
     font-family: Arial; 
     text-align: center; 
     background-color: #f0f0f0; 
     margin: 0; 
     padding: 20px; 
-    background-image: url('WhatsApp Image 2025-08-18 at 09.24.52.jpeg'); 
+    background-image: url('../img/jogotela.jpeg'); 
     background-size: cover; 
     background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: hidden;
 }
 
 h1 { 
     color:#f0f0f0; 
     font-size: 42px; 
-    margin-bottom: 10px; 
+    margin-bottom: -20px; 
     font-family: cursive; 
+}
+
+.titulo1{
+    margin-bottom: 20px;
 }
 
 p { 
     color: white; 
     font-size: 21px; 
-    margin: 13px; 
+    margin: 1px; 
 }
 
 input { 
@@ -43,7 +57,7 @@ button {
     color: black; 
     border: none; 
     border-radius: 5px; 
-    margin: 5px; 
+    margin: 1px; 
     cursor: pointer; 
 }
 
@@ -82,7 +96,7 @@ button:disabled {
 #teclado button:disabled { 
     background-color: #808080; 
     color: #fff; 
-} /* Alterado para cinza mais escuro */
+} 
 
 #mensagem-jogo { 
     font-size: 20px; 
@@ -97,14 +111,6 @@ button:disabled {
     margin-top: 10px; 
 }
 
-#tela-inicial { 
-    margin-top: 300px; 
-}
-
-#tela-jogo { 
-    margin-top: 200px; 
-}
-
 #forca-canvas { 
     max-width: 100%; 
     height: auto; 
@@ -115,7 +121,6 @@ button:disabled {
     font-size: 18px; 
 }
 
-/* Overlay resultado */
 #overlay {
     display: none;
     position: fixed;
@@ -168,14 +173,6 @@ button:disabled {
 
     p { 
         font-size: 16px; 
-    }
-
-    #tela-inicial { 
-        margin-top: 100px; 
-    }
-
-    #tela-jogo { 
-        margin-top: 50px; 
     }
 
     #forca-canvas { 
