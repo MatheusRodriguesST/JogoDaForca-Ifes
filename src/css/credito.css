@@ -54,14 +54,14 @@ header {
   width: 56px;
   height: 56px;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--accent), #8f8fcf);
+  background: linear-gradient(135deg, var(--accent), #00ff6e);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-weight: 700;
   font-size: 18px;
-  box-shadow: 0 6px 18px rgba(105, 105, 194, 0.18);
+  box-shadow: 0 6px 18px rgba(114, 213, 182, 0.18);
 }
 
 h1 {
