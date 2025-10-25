@@ -1,6 +1,5 @@
 //Código responsavel por Cadastro
 
-
 function cadastrarUsuario(event) {
     event.preventDefault(); // proibi a página de atualizar
 
@@ -53,9 +52,25 @@ function cadastrarUsuario(event) {
 
     usuarios.push(novoUsuario); //adiciona o novo usuário à lista de usuários e usa o JSON.stringfy para converter o objeto em uma string JSON
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
-    console.log("Usuário cadastrado com sucesso!");
-    window.location.href = "../html/jogo.html"; // redireciona para a página do jogo
-    MudarLogin(); // Redireciona para o Login
+    // Armazena o usuário logado no localStorage após o cadastro
+    localStorage.setItem('usuarioLogado', JSON.stringify(novoUsuario));
+    // Mensagem de sucesso
+    enviado.style.display = "block";
+    enviado.style.background = "rgba(194, 247, 194, 1)";
+    enviado.style.color = "rgba(14, 14, 14, 1)";
+    enviado.style.border = "green";
+    enviado.innerHTML = "Cadastro realizado com sucesso! Redirecionando para o jogo...";
+
+    // Limpa campos
+    nome.value = "";
+    email.value = "";
+    senha.value = "";
+    confirmarSenha.value = "";
+
+    // Redireciona após 2 segundos
+    setTimeout(() => {
+        window.location.href = "../html/jogo.html";
+    }, 2000);
 }
 
 document.getElementById('formCadastro').addEventListener('submit', cadastrarUsuario); // vincula a função ao botão
@@ -362,6 +377,9 @@ function cadastrarUsuario(event) {
 
     usuarios.push(novoUsuario);
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+    // Armazena o usuário logado no localStorage após o cadastro
+    localStorage.setItem('usuarioLogado', JSON.stringify(novoUsuario));
 
     // Mensagem de sucesso
     enviado.style.display = "block";

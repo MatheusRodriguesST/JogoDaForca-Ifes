@@ -12,13 +12,13 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 1000);
 
-// Toggle do menu hamburger
+// Toggle do menu 
 const menuToggle = document.getElementById('menu-toggle');
 const navMenu = document.getElementById('nav-menu');
 
 menuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
     
-    // Animação do hamburger (transforma em X quando aberto)
+    // Animação do menu (transforma em X quando aberto)
     menuToggle.classList.toggle('active');
 });
