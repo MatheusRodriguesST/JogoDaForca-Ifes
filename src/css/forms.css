@@ -58,7 +58,7 @@ input:focus {
 .senha-container,
 .confirSenha-container,
 .codigo-container {
-    width: 85%; /* largura unificada */
+    width: 85%; 
     max-width: 340px;
     margin: 6px auto;
     display: flex;
@@ -150,8 +150,6 @@ hr {
     align-self: center;
 }
 
-/* ==== CAMPOS DE SENHA E CÓDIGO (CORRIGIDOS) ==== */
-
 #senha-hidder,
 #rp-senha-hidder,
 #rp-confirmar-senha-hidder {
@@ -166,7 +164,7 @@ hr {
 #rp-senha,
 #rp-confirmar-senha {
     width: 100%;
-    padding-right: 40px; /* espaço pro ícone */
+    padding-right: 40px;
     box-sizing: border-box;
 }
 
