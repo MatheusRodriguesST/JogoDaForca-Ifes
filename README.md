@@ -68,3 +68,7 @@ Este projeto foi desenvolvido pelos alunos do **IFES - Campus Serra (1º Ano)**:
    git clone https://github.com/MatheusRodriguesST/JogoDaForca-Ifes.git
 
 2. Abra o arquivo index.html no navegador e jogue!
+
+## 🌐 Como Acessar o Projeto
+Clique em:
+   https://matheusrodriguesst.github.io/JogoDaForca-Ifes/
