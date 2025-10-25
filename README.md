@@ -33,7 +33,7 @@ Cada erro aproxima o jogador da derrota — será que você consegue descobrir a
 
 ---
 
-## Tecnologias Utilizadas
+## 💻 Tecnologias Utilizadas
 
 | Tecnologia | Função |
 |-------------|--------|
@@ -43,7 +43,7 @@ Cada erro aproxima o jogador da derrota — será que você consegue descobrir a
 
 ---
 
-## Equipe de Desenvolvimento
+## 👩‍💻 Equipe de Desenvolvimento
 
 Este projeto foi desenvolvido pelos alunos do **IFES - Campus Serra (1º Ano)**:
 
