@@ -23,11 +23,13 @@ function LoginUsuario(event) {
     const usuario = usuarios.find(user => user.email === email && user.senha === senha);
 
     if (usuario) {
+        // Armazena o usuário logado no localStorage
+        localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
         alert(`Login bem-sucedido! Bem-vindo, ${usuario.nome}! Clique no OK para continuar`);
         // código para fazer depois que o login for bem sucedido
         setTimeout(() => {
-        window.location.href = "../html/jogo.html";
-    }, 1000);
+            window.location.href = "../html/jogo.html";
+        }, 1000);
     } else {
         //alera o limpa oque foi escrito depois 
         alert('Email ou senha incorretos!');

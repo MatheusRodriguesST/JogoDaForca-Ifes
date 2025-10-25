@@ -1,10 +1,10 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
-body{
+body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
@@ -14,7 +14,7 @@ body{
     background-color: rgb(16, 16, 16);
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +27,9 @@ form{
     width: min(90%, 400px);
 }
 
-.formulario-cadastro{
+.formulario-cadastro,
+.formulario-login,
+.formulario-recuperar {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,24 +38,7 @@ form{
     height: auto;
 }
 
-.formulario-login{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-}
-
-.formulario-recuperar{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-}
-
-input{
+input {
     padding: 5px 10px;
     margin: 2px;
     font-size: 14px;
@@ -64,16 +49,18 @@ input{
     width: 100%;
 }
 
-input:focus{
+input:focus {
     border: 2px solid black;
 }
 
 .nome-container,
 .email-container,
 .senha-container,
-.confirSenha-container{
-    width: 80%;
-    margin: 5px;
+.confirSenha-container,
+.codigo-container {
+    width: 85%; /* largura unificada */
+    max-width: 340px;
+    margin: 6px auto;
     display: flex;
     flex-direction: column;
 }
@@ -81,11 +68,12 @@ input:focus{
 .nome-container input,
 .email-container input,
 .senha-container input,
-.confirSenha-container input{
+.confirSenha-container input,
+.codigo-container input {
     margin: 0px;
 }
 
-button{
+button {
     margin: 10px;
     border-radius: 5px;
     border: 2px solid rgb(144, 213, 213);
@@ -96,66 +84,46 @@ button{
     transition: all .4s ease-out;
 }
 
-button:hover{
+button:hover {
     background-color: rgb(70, 172, 246);
     font-size: 18px;
 }
 
-h1{
+h1 {
     margin: 5px;
-    font-size: 35px;
+    font-size: 28px;
     color: rgb(240, 240, 240);
 }
 
-.texto{
-    color:rgb(210, 213, 215);
+.texto {
+    color: rgb(210, 213, 215);
     letter-spacing: 0.5px;
     margin-bottom: 1px;
+    font-size: 16px;
 }
 
-.enviado-cadastro{
+.enviado-cadastro,
+.enviado-login,
+.enviado-recuperar {
     border: 2px solid rgb(72, 174, 72);
     background-color: rgb(194, 247, 194);
     color: rgb(51, 51, 51);
-    text-align: center;
     width: 80%;
     padding: 8px;
     border-radius: 5px;
     margin: 3px;
     display: none;
-}
-
-.enviado-login{
-    border: 2px solid rgb(72, 174, 72);
-    background-color: rgb(194, 247, 194);
-    color: rgb(51, 51, 51);
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-    margin: 3px;
-    display: none;
     text-align: center;
+    font-size: 14px;
 }
 
-.enviado-recuperar{
-    border: 2px solid rgb(72, 174, 72);
-    background-color: rgb(194, 247, 194);
-    color: rgb(51, 51, 51);
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-    margin: 3px;
-    display: none;
-    text-align: center;
-}
-
-p{
+p {
     margin: 10px;
-    font-size: 20px;
+    font-size: 18px;
     color: aliceblue;
 }
 
-a{
+a {
     margin: 0px;
     text-decoration: none;
     cursor: pointer;
@@ -163,98 +131,48 @@ a{
     transition: all .4s ease-out;
 }
 
-a:hover{
+a:hover {
     color: rgb(103, 132, 246);
-    font-size: 22px;
-}
-
-hr{
-    margin-top: 5px;
-    width: 60%;
-    background-color: white;
-    margin: 2px solid white;
-}
-
-.botao-login{
-    margin: 10px;
-    padding: 5px 13px;
-}
-
-.botao-recuperar{
-    margin: 10px;
-    padding: 5px 13px;
-}
-
-#senha-hidder {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    width: 100%;
-}
-
-#senha1 {
-    width: 100%;
-}
-
-#hidder {
-    width: 27px;
-    height: 27px;
-    margin-right: 10px;
-    position: absolute;
-    right: 0rem;
-    cursor: pointer;
-}
-
-h1 {
-    font-size: 28px;
-}
-
-p {
-
-    font-size: 18px;
-}
-
-button {
-    font-size: 14px;
-    padding: 4px 12px;
-}
-button:hover {
-    font-size: 16px;
-}
-    a:hover {
     font-size: 20px;
 }
 
-input {
-    font-size: 14px;
-}
-
-.nome-container,
-.email-container,
-.senha-container,
-.confirSenha-container {
-    width: 100%;
-}
-
 hr {
+    margin-top: 5px;
     width: 80%;
+    background-color: white;
+    border: 2px solid white;
 }
 
-/* =================== Ajuste do olho =================== */
-#rp-senha-hidder {
+.botao-login,
+.botao-recuperar {
+    margin: 10px;
+    padding: 5px 13px;
+    align-self: center;
+}
+
+/* ==== CAMPOS DE SENHA E CÓDIGO (CORRIGIDOS) ==== */
+
+#senha-hidder,
+#rp-senha-hidder,
+#rp-confirmar-senha-hidder {
     display: flex;
     flex-direction: row;
     position: relative;
     width: 100%;
     align-items: center;
-  }
-  
-  #rp-senha-hidder input {
+}
+
+#senha1,
+#rp-senha,
+#rp-confirmar-senha {
     width: 100%;
-    padding-right: 40px;
-  }
-  
-  #rp-hidder {
+    padding-right: 40px; /* espaço pro ícone */
+    box-sizing: border-box;
+}
+
+#hidder,
+#rp-hidder,
+#rp-confirmar-hidder {
     width: 27px;
     height: 27px;
     position: absolute;
@@ -262,5 +180,18 @@ hr {
     cursor: pointer;
     max-width: none !important;
     user-select: none;
-  }
-  
+}
+
+@media (min-width: 1200px) {
+    #hidder,
+    #rp-hidder,
+    #rp-confirmar-hidder {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+#rp-codigo {
+    width: 100%;
+    box-sizing: border-box;
+}

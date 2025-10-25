@@ -1,3 +1,16 @@
+// Verifica se o usuário está logado
+try {
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+    if (!usuarioLogado || !usuarioLogado.email) {
+        alert('Você precisa estar logado para acessar o jogo!');
+        window.location.href = "../html/login.html";
+    }
+} catch (e) {
+    alert('Erro ao verificar login. Por favor, faça login novamente.');
+    localStorage.removeItem('usuarioLogado'); // Limpa qualquer dado corrompido
+    window.location.href = "../html/login.html";
+}
+
 // Variáveis principais
 let palavraOriginal = '', palavraNormalizada = '', palavraVisivel = [];
 let erros = 0, maxErros = 6;
@@ -276,6 +289,7 @@ function reiniciarJogo() {
     tecladoEl.querySelectorAll('button').forEach(b => b.disabled = false);
     botaoReiniciar.style.display = 'none';
 }
+
 const navBtns = document.querySelectorAll('.nav-btn');
 const pages = document.querySelectorAll('.page');
 
@@ -334,3 +348,13 @@ if(location.hash){
   const target = location.hash.replace('#','');
   if([...pages].some(p => p.id === target)) setActive(target);
 }
+
+// Função para logout
+function logout() {
+    localStorage.removeItem('usuarioLogado'); // Remove o usuário logado
+    alert('Você foi desconectado!');
+    window.location.href = "../html/login.html";
+}
+
+// Vincula o botão de logout
+document.getElementById('botao-logout').addEventListener('click', logout);
