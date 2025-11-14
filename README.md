@@ -72,3 +72,4 @@ Este projeto foi desenvolvido pelos alunos do **IFES - Campus Serra (1º Ano)**:
 ## 🌐 Como Acessar o Projeto
 Clique em:
    https://matheusrodriguesst.github.io/JogoDaForca-Ifes/
+   https://www.canva.com/design/DAG4s66Q1Ho/eH0PcW5RgB8jNMLh_XEy7Q/edit?utm_content=DAG4s66Q1Ho&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
