@@ -1,15 +1,3 @@
-// Verifica se o usuário está logado
-try {
-    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
-    if (!usuarioLogado || !usuarioLogado.email) {
-        alert('Você precisa estar logado para acessar o jogo!');
-        window.location.href = "../html/login.html";
-    }
-} catch (e) {
-    alert('Erro ao verificar login. Por favor, faça login novamente.');
-    localStorage.removeItem('usuarioLogado'); // Limpa qualquer dado corrompido
-    window.location.href = "../html/login.html";
-}
 
 // Variáveis principais
 let palavraOriginal = '', palavraNormalizada = '', palavraVisivel = [];
